@@ -12,7 +12,7 @@ public class UniversidadEjemplo {
        
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost:1234/universidadulp", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/universidadulp", "root", "");
          
             //Agregar Alumno:
             
