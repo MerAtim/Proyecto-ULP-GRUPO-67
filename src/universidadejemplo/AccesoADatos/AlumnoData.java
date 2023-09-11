@@ -87,7 +87,7 @@ public class AlumnoData {
             }
             ps.close();
         }catch (SQLException ex){
-           JOptionPane.showMessageDialog(null, "Erro al acceder a la tabla alumno"+ex.getMessage());
+           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno"+ex.getMessage());
         }
         return alumno;
         
@@ -96,7 +96,7 @@ public class AlumnoData {
     public List<Alumno>listarAlumnos(){
      List<Alumno>alumnos=new ArrayList<>(); 
      try{
-         String sql="SELECT* FROM alumnno WHERE estado=1";
+         String sql="SELECT* FROM alumno WHERE estado=1";
          PreparedStatement ps=con.prepareStatement(sql);
          ResultSet rs=ps.executeQuery();
          while(rs.next()){
@@ -107,7 +107,7 @@ public class AlumnoData {
              alumno.setNombre(rs.getString("nombre"));
              alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
              alumno.setActivo(rs.getBoolean("estado"));
-             alumno.add(alumno);//crear método agregar alumno
+             alumnos.add(alumno);//crear método agregar alumno
          }
          ps.close();
      }catch(SQLException ex){
