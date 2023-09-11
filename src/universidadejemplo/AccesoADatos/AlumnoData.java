@@ -107,7 +107,7 @@ public class AlumnoData {
              alumno.setNombre(rs.getString("nombre"));
              alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
              alumno.setActivo(rs.getBoolean("estado"));
-             alumno.add(alumno);//crear método agregar alumno
+             alumnos.add(alumno);
          }
          ps.close();
      }catch(SQLException ex){

@@ -4,25 +4,27 @@ package universidadejemplo.Entidades;
 
 public class Inscripcion {
     private int idInscripcion;
+     double nota;
     private Alumno alumno;
     private Materia Materia;
-    double nota;
-
+   
     public Inscripcion() {
     }
 
-    public Inscripcion(int idInscripcion, Alumno alumno, Materia Materia, double nota) {
+    public Inscripcion(int idInscripcion, double nota, Alumno alumno, Materia Materia) {
         this.idInscripcion = idInscripcion;
+        this.nota = nota;
         this.alumno = alumno;
         this.Materia = Materia;
-        this.nota = nota;
     }
 
-    public Inscripcion(Alumno alumno, Materia Materia, double nota) {
+    public Inscripcion(double nota, Alumno alumno, Materia Materia) {
+        this.nota = nota;
         this.alumno = alumno;
         this.Materia = Materia;
-        this.nota = nota;
     }
+
+    
 
     public Inscripcion(double nota) {
         this.nota = nota;

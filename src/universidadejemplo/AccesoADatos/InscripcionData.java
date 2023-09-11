@@ -17,8 +17,16 @@ public class InscripcionData {
     public InscripcionData() {
     }
     
+    
+    
     public void guardarInscripcion(Inscripcion insc){
-        
+        String sql="INSERT INTO inscripcion (idInscripcion, nota, idAlumno, idMateria)VALUES(?,?,?,?)";
+        try{
+            PreparedStatement ps=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, insc.getIdInscripcion());
+            ps.setDouble(2, insc.getNota());
+            ps.setInt(3, insc.getAlumno());
+        }
     }
     
     public List<Inscripcion>obtenerInscripciones(){
@@ -42,7 +50,7 @@ public class InscripcionData {
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnioMateria(rs.getInt("año"));
-                materia.add(materia);//crear método
+                materias.add(materia);
                 
             }
             ps.close();
@@ -53,11 +61,12 @@ public class InscripcionData {
     }       
     
     public List<Materia>obtenerMateriasNoCursadas(int id){
-        List<Materia>materiasNo
+        List<Materia>materiasNoCursadas=new ArrayList<Materia>();
         
     }
     
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
+        
         
     }
     
