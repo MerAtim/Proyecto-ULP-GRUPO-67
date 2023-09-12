@@ -88,7 +88,6 @@ public class InscripcionData {
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnioMateria(rs.getInt("año"));
                 materias.add(materia);
-
             }
             ps.close();
         } catch (SQLException ex) {

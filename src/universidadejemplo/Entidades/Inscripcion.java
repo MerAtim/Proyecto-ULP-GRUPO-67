@@ -14,16 +14,17 @@ public class Inscripcion {
 
     public Inscripcion(int idInscripcion, double nota, Alumno alumno, Materia materia) {
         this.idInscripcion = idInscripcion;
+        this.nota = nota;
         this.alumno = alumno;
         this.Materia = Materia;
-        this.nota = nota;
     }
 
     public Inscripcion( double nota, Alumno alumno, Materia Materia) {
         this.alumno = alumno;
         this.Materia = Materia;
-        this.nota = nota;
     }
+
+    
 
     public Inscripcion(double nota) {
         this.nota = nota;
