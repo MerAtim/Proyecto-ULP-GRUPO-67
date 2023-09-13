@@ -99,48 +99,45 @@ public class InscripcionData {
     }
 
     public List<Materia> obtenerMateriasNoCursadas(int id) {
-        List<Materia> materias=new ArrayList<>();
-        String sql="SELECT inscripcion.idMateria, nombre, año FROM inscripcion, materia WHERE materia.estado=0";
-        try{
+        List<Materia> materias = new ArrayList<>();
+        String sql = "SELECT inscripcion.idMateria, nombre, año FROM inscripcion, materia WHERE materia.estado=0";
+        try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             Materia materia;
-            while(rs.next()){
-                         materia = new Materia();
+            while (rs.next()) {
+                materia = new Materia();
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnioMateria(rs.getInt("año"));
                 materias.add(materia);
             }
             ps.close();
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia"+ex.getMessage());
-              
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia" + ex.getMessage());
+
         }
-       
+
         return materias;
     }
 
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria) {
-        String sql="UPDATE inscripcion SET estado=false WHERE idAlumno=? AND idMateria=?;";
+        String sql = "UPDATE inscripcion SET estado=false WHERE idAlumno=? AND idMateria=?;";
         try {
-            PreparedStatement preparedStatement=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement preparedStatement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, idAlumno);
             preparedStatement.setInt(2, idMateria);
-            int resultado=preparedStatement.executeUpdate(); //leer sobre result set y enteros
-            if(resultado>0){
+            int resultado = preparedStatement.executeUpdate(); //leer sobre result set y enteros
+            if (resultado > 0) {
                 JOptionPane.showMessageDialog(null, "La inscripción fue borrada con éxito");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Los datos ingresados no son válidos");
             }
-        
+
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripción"+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripción" + ex.getMessage());
         }
-       
-        
-        
 
     }
 

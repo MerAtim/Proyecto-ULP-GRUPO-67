@@ -1,14 +1,12 @@
 
 package universidadejemplo.Entidades;
 
-
 public class Inscripcion {
     private int idInscripcion;
-      double nota;
+    double nota;
     private Alumno alumno;
     private Materia Materia;
   
-
     public Inscripcion() {
     }
 
@@ -23,8 +21,6 @@ public class Inscripcion {
         this.alumno = alumno;
         this.Materia = Materia;
     }
-
-    
 
     public Inscripcion(double nota) {
         this.nota = nota;
@@ -61,8 +57,5 @@ public class Inscripcion {
     public void setNota(double nota) {
         this.nota = nota;
     }
-    
-    
-    
-    
+        
 }
