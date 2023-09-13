@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:1234
--- Tiempo de generación: 04-09-2023 a las 02:19:00
+-- Servidor: localhost
+-- Tiempo de generación: 13-09-2023 a las 21:10:07
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -57,20 +57,21 @@ CREATE TABLE `inscripcion` (
   `idInscripto` int(11) NOT NULL,
   `nota` int(11) NOT NULL,
   `idAlumno` int(11) NOT NULL,
-  `idMateria` int(11) NOT NULL
+  `idMateria` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `inscripcion`
 --
 
-INSERT INTO `inscripcion` (`idInscripto`, `nota`, `idAlumno`, `idMateria`) VALUES
-(1, 8, 1, 1),
-(2, 6, 1, 2),
-(3, 9, 2, 1),
-(4, 7, 2, 2),
-(5, 8, 3, 1),
-(6, 10, 3, 2);
+INSERT INTO `inscripcion` (`idInscripto`, `nota`, `idAlumno`, `idMateria`, `estado`) VALUES
+(1, 8, 1, 1, 0),
+(2, 6, 1, 2, 0),
+(3, 9, 2, 1, 0),
+(4, 7, 2, 2, 0),
+(5, 8, 3, 1, 0),
+(6, 10, 3, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -91,9 +92,12 @@ CREATE TABLE `materia` (
 
 INSERT INTO `materia` (`idMateria`, `nombre`, `año`, `estado`) VALUES
 (1, 'Matematicas', 1, 1),
-(2, 'Matematicas II', 2, 1),
-(3, 'Matematicas III', 3, 1),
-(4, 'Matematicas IV', 4, 1);
+(2, 'Lengua y Literatura', 1, 1),
+(3, 'Sociología', 1, 1),
+(4, 'Práctica del lenguaje', 2, 1),
+(5, 'Filosofía', 2, 1),
+(6, 'Psicología', 2, 1),
+(7, 'Laboratorio 3', 3, 1);
 
 --
 -- Índices para tablas volcadas
@@ -140,7 +144,7 @@ ALTER TABLE `inscripcion`
 -- AUTO_INCREMENT de la tabla `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `idMateria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idMateria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
