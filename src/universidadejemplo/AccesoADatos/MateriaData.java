@@ -34,23 +34,23 @@ public class MateriaData {
             preparedStatement.setString(1, materia.getNombre());
             preparedStatement.setInt(2, materia.getAnioMateria());
             preparedStatement.setBoolean(3, materia.isActivo());
-            
+            System.out.println("linea 37");
             preparedStatement.executeUpdate();
-            
+            System.out.println("linea 39");
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
-            
+            System.out.println("linea 41");
             if(resultSet.next()){
-            
-                materia.setIdMateria(resultSet.getInt("idMateria"));
+            System.out.println("linea 43");
+                materia.setIdMateria(resultSet.getInt(1));
                 JOptionPane.showMessageDialog(null, "Se guardo la materia con exito!!");
-                
+                System.out.println("linea 46");
             }
-            
+            System.out.println("linea 48");
             preparedStatement.close();
             
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia!");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia!"+ex.getMessage());
         }
     }
     
@@ -90,14 +90,16 @@ public class MateriaData {
     
     public void modificarMateria(Materia materia){
         
-        String upDateMateria = "UPDATE materia SET(?,?,?) WHERE idMateria = ?";
-        
         try {
+            
+            String upDateMateria = "UPDATE materia SET nombre = ?, año = ?, estado = ? WHERE idMateria = ?";
+            
             PreparedStatement preparedStatement = connection.prepareStatement(upDateMateria);
             
             preparedStatement.setString(1, materia.getNombre());
             preparedStatement.setInt(2, materia.getAnioMateria());
             preparedStatement.setBoolean(3,materia.isActivo());
+            preparedStatement.setInt(4, materia.getIdMateria());
             
             
             
@@ -113,14 +115,14 @@ public class MateriaData {
             preparedStatement.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia!");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia!"+ex.getMessage());
         }
     }
     
     public void eliminarMateria(int idMateria){
         
         try {
-            String deliteLogic = " UPDATE materia SET(estado = 0) WHERE idMateria = ?";
+            String deliteLogic = " UPDATE materia SET estado = 0 WHERE idMateria = ?";
             
             PreparedStatement preparedStatement = connection.prepareStatement(deliteLogic);
             
@@ -128,7 +130,7 @@ public class MateriaData {
             
             int esModificado = preparedStatement.executeUpdate();
             
-            if(esModificado == 1){
+            if(esModificado > 1){
                 JOptionPane.showMessageDialog(null,"Materia eliminada");
             }else{
                 JOptionPane.showMessageDialog(null,"La materia no existe!");
@@ -144,8 +146,6 @@ public class MateriaData {
     public ArrayList<Materia> listarMaterias(){
         
         ArrayList<Materia> materias = new ArrayList<>();
-        
-        
         
         String listarMaterias = "SELECT * FROM materia WHERE estado = 1 ";
         
