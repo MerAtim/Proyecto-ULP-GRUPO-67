@@ -17,7 +17,7 @@ public class UniversidadEjemplo {
         
         //guardarAlumno();
         //Alumno mario = new Alumno(7, 65325120, "Flores","Luis Mario", LocalDate.of(1991, 10, 25), true);
-        //AlumnoData alu= new AlumnoData();
+        AlumnoData alu= new AlumnoData();
         /*alu.guardarAlumno(mario);*/
         
         //buscarAlumno();
@@ -39,11 +39,11 @@ public class UniversidadEjemplo {
         //eliminarAlumno
         /*alu.eliminarAlumno(7);*/
                 
-        //------------------------------------------------------------------------------//
-        //---------------------METODOS INSCRIPCION DATA---------------------//
-        //-----------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------//
+        //---------------------METODOS INSCRIPCION DATA----------------------//
+        //-------------------------------------------------------------------------------//
         
-        // guardarInscripcion();
+        //guardarInscripcion();
         /*AlumnoData ad = new AlumnoData();
         MateriaData md = new MateriaData();
         InscripcionData id = new InscripcionData();
@@ -52,10 +52,35 @@ public class UniversidadEjemplo {
         Inscripcion insc = new Inscripcion(9, alumno, mate, true);
         id.guardarInscripcion(insc);*/
         
-        //
-        InscripcionData id = new InscripcionData();
+        //obtenerInscripciones();
+        /*InscripcionData id = new InscripcionData();
         for(Inscripcion insc:id.obtenerInscripciones()){
-            System.out.println(insc.toString());
-        }
+        System.out.println(insc.toString());
+        }*/
+        
+        //obtenerInscripcionesPorAlumno();
+        /*InscripcionData id = new InscripcionData();
+        for(Inscripcion insc:id.obtenerInscripcionesPorAlumno(1)){
+        System.out.println(insc.toString());
+        }*/
+        
+        //obtenerMateriasCursadas();
+        /*InscripcionData id = new InscripcionData();
+        for(Materia mate:id.obtenerMateriasCursadas(1)){
+        System.out.println(mate.toString());
+        }*/
+        
+        //obtenerMateriasNoCursadas();
+        /*InscripcionData id = new InscripcionData();
+        for(Materia mate:id.obtenerMateriasNoCursadas(2)){
+        System.out.println(mate.toString());
+        }*/
+        
+        //borrarInscripcionMateriaAlumno();
+        /*InscripcionData id = new InscripcionData();
+        id.borrarInscripcionMateriaAlumno(3, 1);*/
+        
+     
+        
     }
 }
