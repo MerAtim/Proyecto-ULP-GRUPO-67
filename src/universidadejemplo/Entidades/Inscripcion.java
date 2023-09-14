@@ -58,8 +58,8 @@ public class Inscripcion {
         return materia;
     }
 
-    public void setMateria(Materia Materia) {
-        this.materia = Materia;
+    public void setMateria(Materia materia) {
+        this.materia = materia;
     }
 
     public boolean isEstado() {
