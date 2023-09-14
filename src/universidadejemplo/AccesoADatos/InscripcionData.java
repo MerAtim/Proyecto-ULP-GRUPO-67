@@ -135,11 +135,12 @@ public class InscripcionData {
     }
 
     public void actualizarNota(int idAlumno, int idMateria, double nota) {
-
+    
     }
 
     public List<Alumno> obtenerAlumnosPorMateria(int idMateria) {
         return null;
+    
     }
 
 }
