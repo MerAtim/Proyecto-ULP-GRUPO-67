@@ -5,21 +5,25 @@ public class Inscripcion {
     private int idInscripcion;
     double nota;
     private Alumno alumno;
-    private Materia Materia;
+    private Materia materia;
+    private boolean estado;
   
     public Inscripcion() {
     }
 
-    public Inscripcion(int idInscripcion, double nota, Alumno alumno, Materia materia) {
+    public Inscripcion(int idInscripcion, double nota, Alumno alumno, Materia materia, boolean estado) {
         this.idInscripcion = idInscripcion;
         this.nota = nota;
         this.alumno = alumno;
-        this.Materia = Materia;
+        this.materia = materia;
+        this.estado = estado;
     }
 
-    public Inscripcion( double nota, Alumno alumno, Materia Materia) {
+    public Inscripcion( double nota, Alumno alumno, Materia materia, boolean estado) {
+        this.nota = nota;
         this.alumno = alumno;
-        this.Materia = Materia;
+        this.materia = materia;
+        this.estado = estado;
     }
 
     public Inscripcion(double nota) {
@@ -34,6 +38,14 @@ public class Inscripcion {
         this.idInscripcion = idInscripcion;
     }
 
+    public double getNota() {
+        return nota;
+    }
+
+    public void setNota(double nota) {
+        this.nota = nota;
+    }
+
     public Alumno getAlumno() {
         return alumno;
     }
@@ -43,19 +55,23 @@ public class Inscripcion {
     }
 
     public Materia getMateria() {
-        return Materia;
+        return materia;
     }
 
     public void setMateria(Materia Materia) {
-        this.Materia = Materia;
+        this.materia = Materia;
     }
 
-    public double getNota() {
-        return nota;
+    public boolean isEstado() {
+        return estado;
     }
 
-    public void setNota(double nota) {
-        this.nota = nota;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
-        
+
+    @Override
+    public String toString() {
+        return "Inscripcion: " + "\nIdInscripcion: " + idInscripcion + "\nnota: " + nota + "\nAlumno: " + alumno + "\nMateria: " + materia + "\n--------------\n";
+        }
 }
