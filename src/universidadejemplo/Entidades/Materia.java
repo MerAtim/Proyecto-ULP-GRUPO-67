@@ -1,7 +1,6 @@
 
 package universidadejemplo.Entidades;
 
-
 public class Materia {
     private int idMateria;
     private String nombre;
@@ -60,7 +59,4 @@ public class Materia {
     public String toString() {
         return "IdMateria: " + idMateria + "\nNombre: " + nombre + "\nAño Materia: " + anioMateria + "\nEstado: " + activo + "\n";
     }
-    
-    
-    
 }

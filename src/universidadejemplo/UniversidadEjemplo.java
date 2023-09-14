@@ -10,7 +10,6 @@ public class UniversidadEjemplo {
 
     public static void main(String[] args) {
         
-
         //------------------------------------------------------------------------------//
         //----------------------METODOS ALUMNO DATA--------------------------//
         //-----------------------------------------------------------------------------//
@@ -80,7 +79,15 @@ public class UniversidadEjemplo {
         /*InscripcionData id = new InscripcionData();
         id.borrarInscripcionMateriaAlumno(3, 1);*/
         
-     
+        //actualizarNota();
+        /*InscripcionData id = new InscripcionData();
+        id.actualizarNota(3, 2, 6);*/
+        
+        //obtenerAlumnosPorMateria();
+        /*InscripcionData id = new InscripcionData();
+        for(Alumno alum:id.obtenerAlumnosPorMateria(2)){
+        System.out.println(alum.toString());
+        }*/
         
     }
 }

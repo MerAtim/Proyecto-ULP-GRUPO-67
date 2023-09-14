@@ -3,7 +3,9 @@ package universidadejemplo.AccesoADatos;
 import java.sql.*;
 import java.time.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import universidadejemplo.Entidades.Alumno;
 import universidadejemplo.Entidades.Inscripcion;
@@ -135,12 +137,44 @@ public class InscripcionData {
     }
 
     public void actualizarNota(int idAlumno, int idMateria, double nota) {
-    
+        String sql = "UPDATE inscripcion SET nota=? WHERE idAlumno=? AND idMateria=?;";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setDouble(1, nota);
+            preparedStatement.setInt(2, idAlumno);
+            preparedStatement.setInt(3, idMateria);
+            int resultado = preparedStatement.executeUpdate();
+            if (resultado > 0) {
+                JOptionPane.showMessageDialog(null, "Nota modificada exitosamente");
+            }
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar nota");
+        }
     }
 
     public List<Alumno> obtenerAlumnosPorMateria(int idMateria) {
-        return null;
-    
+        List<Alumno> alumnos = new ArrayList<>();
+        String sql = "SELECT a.* FROM inscripcion i JOIN alumno a ON i.idAlumno=a.idAlumno JOIN materia m ON i.idMateria = m.idMateria WHERE i.idMateria = ?";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setInt(1, idMateria);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Alumno alumno = new Alumno();
+                alumno.setIdAlumno(resultSet.getInt("idAlumno"));
+                alumno.setNombre(resultSet.getString("nombre"));
+                alumno.setApellido(resultSet.getString("apellido"));
+                alumno.setFechaNacimiento(resultSet.getDate("FechaNacimiento").toLocalDate());
+                alumno.setActivo(resultSet.getBoolean("estado"));
+                alumnos.add(alumno);
+            }
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener la tabla Inscripcion");
+        }
+        return alumnos;
+
     }
 
 }
