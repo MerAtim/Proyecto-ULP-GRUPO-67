@@ -1,4 +1,3 @@
-
 package universidadejemplo;
 
 
@@ -9,10 +8,13 @@ import java.sql.*;
 public class UniversidadEjemplo {
 
     public static void main(String[] args) {
+        
+        
+        System.out.println("Hello word!!");
        
-        try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/universidadulp", "root", "");
+//        try {
+//            Class.forName("org.mariadb.jdbc.Driver");
+//            Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/universidadulp", "root", "");
          
             //Agregar Alumno:
             
@@ -113,11 +115,11 @@ public class UniversidadEjemplo {
             */
             
                         
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Error al cargar el driver");
-        } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null, "Error"+ex.getMessage());
-        }
+//        } catch (ClassNotFoundException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al cargar el driver");
+//        } catch (SQLException ex) {
+//             JOptionPane.showMessageDialog(null, "Error"+ex.getMessage());
+//        }
     }
 }
 
