@@ -5,7 +5,7 @@ public class Inscripcion {
     private int idInscripcion;
     double nota;
     private Alumno alumno;
-    private Materia Materia;
+    private Materia materia;
     private boolean estado;
   
     public Inscripcion() {
@@ -15,14 +15,14 @@ public class Inscripcion {
         this.idInscripcion = idInscripcion;
         this.nota = nota;
         this.alumno = alumno;
-        this.Materia = Materia;
+        this.materia = materia;
         this.estado = estado;
     }
 
-    public Inscripcion( double nota, Alumno alumno, Materia Materia, boolean estado) {
+    public Inscripcion( double nota, Alumno alumno, Materia materia, boolean estado) {
         this.nota = nota;
         this.alumno = alumno;
-        this.Materia = Materia;
+        this.materia = materia;
         this.estado = estado;
     }
 
@@ -55,11 +55,11 @@ public class Inscripcion {
     }
 
     public Materia getMateria() {
-        return Materia;
+        return materia;
     }
 
     public void setMateria(Materia Materia) {
-        this.Materia = Materia;
+        this.materia = Materia;
     }
 
     public boolean isEstado() {
@@ -69,5 +69,9 @@ public class Inscripcion {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Inscripcion: " + "\nIdInscripcion: " + idInscripcion + "\nnota: " + nota + "\nAlumno: " + alumno + "\nMateria: " + materia + "\n--------------\n";
+        }
 }

@@ -1,11 +1,9 @@
 package universidadejemplo.AccesoADatos;
 
 import java.sql.*;
-import java.time.LocalDate;
+import java.time.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import universidadejemplo.Entidades.Alumno;
 import universidadejemplo.Entidades.Inscripcion;
@@ -42,16 +40,14 @@ public class InscripcionData {
     }
 
     private List<Inscripcion> obtenerInscripcionesQuery(String sql) {
-
         List<Inscripcion> inscripciones = new ArrayList<>();
         try {
-
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Alumno a = new Alumno(rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getDate(9).toLocalDate(), rs.getBoolean(10));
-                Materia m = new Materia(rs.getInt(11), rs.getString(12), rs.getInt(13), rs.getBoolean(14));
-                Inscripcion i = new Inscripcion(rs.getInt(1), rs.getInt(2), a, m, rs.getBoolean(5));
+                Alumno a = new Alumno(rs.getInt("idAlumno"), rs.getInt("dni"), rs.getString("apellido"), rs.getString("nombre"), rs.getDate("fechaNacimiento").toLocalDate(), rs.getBoolean("estado"));
+                Materia m = new Materia(rs.getInt("idMateria"), rs.getString("nombre"), rs.getInt("año"), rs.getBoolean("estado"));
+                Inscripcion i = new Inscripcion(rs.getInt("idInscripto"), rs.getInt("nota"), a, m, rs.getBoolean("estado"));
                 inscripciones.add(i);
             }
             ps.close();
@@ -62,10 +58,9 @@ public class InscripcionData {
     }
 
     public List<Inscripcion> obtenerInscripciones() {
-        String sql = "SELECT * FROM inscripcion i  "
+        String sql = "SELECT idInscripto, m.idMateria, m.nombre, nota, m.estado, i.estado, a.idAlumno, dni, apellido, a.nombre, fechaNacimiento, a.estado, año FROM inscripcion i "
                 + "JOIN alumno a ON i.idAlumno = a.idAlumno "
-                + "JOIN materia m ON i.idMateria = m.idMateria";
-
+                + "JOIN materia m ON i.idMateria = m.idMateria ";
         return obtenerInscripcionesQuery(sql);
 
     }
@@ -118,9 +113,7 @@ public class InscripcionData {
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia" + ex.getMessage());
-
         }
-
         return materias;
     }
 
@@ -136,11 +129,9 @@ public class InscripcionData {
             } else {
                 JOptionPane.showMessageDialog(null, "Los datos ingresados no son válidos");
             }
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripción" + ex.getMessage());
         }
-
     }
 
     public void actualizarNota(int idAlumno, int idMateria, double nota) {

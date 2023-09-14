@@ -16,7 +16,7 @@ public class UniversidadEjemplo {
         
         //guardarAlumno();
         //Alumno mario = new Alumno(7, 65325120, "Flores","Luis Mario", LocalDate.of(1991, 10, 25), true);
-        AlumnoData alu= new AlumnoData();
+        //AlumnoData alu= new AlumnoData();
         /*alu.guardarAlumno(mario);*/
         
         //buscarAlumno();
@@ -39,17 +39,22 @@ public class UniversidadEjemplo {
         /*alu.eliminarAlumno(7);*/
                 
         //------------------------------------------------------------------------------//
-        //--------------------METODOS INSCRIPCION DATA----------------------//
+        //---------------------METODOS INSCRIPCION DATA---------------------//
         //-----------------------------------------------------------------------------//
         
         // guardarInscripcion();
         /*AlumnoData ad = new AlumnoData();
         MateriaData md = new MateriaData();
         InscripcionData id = new InscripcionData();
-       
         Alumno alumno = ad.buscarAlumno(1);
         Materia mate = md.buscarMateria(1);
         Inscripcion insc = new Inscripcion(9, alumno, mate, true);
         id.guardarInscripcion(insc);*/
+        
+        //
+        InscripcionData id = new InscripcionData();
+        for(Inscripcion insc:id.obtenerInscripciones()){
+            System.out.println(insc.toString());
+        }
     }
 }
