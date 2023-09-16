@@ -1,11 +1,8 @@
 package universidadejemplo.AccesoADatos;
 
 import java.sql.*;
-import java.time.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.swing.JOptionPane;
 import universidadejemplo.Entidades.Alumno;
 import universidadejemplo.Entidades.Inscripcion;
@@ -14,9 +11,7 @@ import universidadejemplo.Entidades.Materia;
 public class InscripcionData {
 
     private Connection con;
-    private MateriaData matData;
-    private AlumnoData aluData;
-
+   
     public InscripcionData() {
         this.con = Conexion.getConexion();
     }
