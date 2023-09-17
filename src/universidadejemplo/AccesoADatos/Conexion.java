@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class Conexion {
     
-    private static final String URL="jdbc:mariadb://localhost:3306/";
+    private static final String URL="jdbc:mariadb://localhost:1234/";
     private static final String DB="universidadulp";
     private static final String USUARIO="root";
     private static String PASSWORD="";
@@ -20,15 +20,14 @@ public class Conexion {
             try{
                 Class.forName("org.mariadb.jdbc.Driver");
                 connection=DriverManager.getConnection(URL+DB+"?useLegacyDatetimecode=false&serverTimezone=UTC"+"&user="+USUARIO+"&password="+PASSWORD);
-                System.out.println("coneccion a la base de datos exitosa!!");
+                System.out.println("Conexion a la base de datos exitosa.");
             }catch(SQLException ex){
-                    JOptionPane.showMessageDialog(null, "Error al conectarse a la BD"+ex.getMessage());
+                    JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos"+ex.getMessage());
             }catch(ClassNotFoundException ex){
                 JOptionPane.showMessageDialog(null, "Error al cargar los drivers"+ex.getMessage());
             }
         }
         return connection;
     }
-    
     
 }

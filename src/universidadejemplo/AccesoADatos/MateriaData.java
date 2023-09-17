@@ -28,14 +28,13 @@ public class MateriaData {
             preparedStatement.setBoolean(3, materia.isActivo());
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
-
             if (resultSet.next()) {
                 materia.setIdMateria(resultSet.getInt(1));
                 JOptionPane.showMessageDialog(null, "Se guardo la materia con exito!!");
             }
             preparedStatement.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia!" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia." + ex.getMessage());
         }
     }
 
@@ -52,7 +51,7 @@ public class MateriaData {
                 materia.setNombre(resultSet.getString("nombre"));
                 materia.setAnioMateria(resultSet.getInt("año"));
             } else {
-                JOptionPane.showMessageDialog(null, "No existe la materia!!");
+                JOptionPane.showMessageDialog(null, "No existe la materia.");
             }
             preparedStatement.close();
         } catch (SQLException ex) {
@@ -91,7 +90,7 @@ public class MateriaData {
             preparedStatement.setInt(1, idMateria);
             int esModificado = preparedStatement.executeUpdate();
 
-            if (esModificado > 1) {
+            if (esModificado > 0) {
                 JOptionPane.showMessageDialog(null, "Materia eliminada");
             } else {
                 JOptionPane.showMessageDialog(null, "La materia no existe!");
