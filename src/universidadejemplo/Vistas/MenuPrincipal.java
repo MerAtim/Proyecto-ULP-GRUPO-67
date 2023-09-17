@@ -40,6 +40,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(700, 600));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -108,7 +109,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        jDesktopPane1.removeAll(); // borra lo que hay en pantalla
+        jDesktopPane1.repaint(); // recrea la ventana
+        GestionDeAlumnos gestionAlumno = new GestionDeAlumnos();
+       
+        gestionAlumno.setVisible(true); // coloca visible la ventana nueva
+        jDesktopPane1.add(gestionAlumno);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
