@@ -12,7 +12,7 @@ public class Conexion {
     private static String PASSWORD="";
     private static Connection connection;
 
-    private Conexion() {
+    public Conexion() {
     }
     
     public static Connection getConexion(){

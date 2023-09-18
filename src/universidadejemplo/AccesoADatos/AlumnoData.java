@@ -9,8 +9,9 @@ import universidadejemplo.Entidades.Alumno;
 public class AlumnoData {
 
     private Connection con = null;
-
-    public AlumnoData() {
+    
+    
+    public AlumnoData(Conexion conexion) {
         this.con = Conexion.getConexion();
     }
 

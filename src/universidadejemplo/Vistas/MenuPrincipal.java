@@ -4,17 +4,26 @@
  */
 package universidadejemplo.Vistas;
 
+
+import universidadejemplo.AccesoADatos.AlumnoData;
+import universidadejemplo.AccesoADatos.Conexion;
+
 /**
  *
  * @author estudiante
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-
+    
+    Conexion conexion;
+    AlumnoData alumData;
+    
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
         initComponents();
+        conexion = new Conexion();
+        alumData = new AlumnoData(conexion);
     }
 
     /**
@@ -111,8 +120,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         jDesktopPane1.removeAll(); // borra lo que hay en pantalla
         jDesktopPane1.repaint(); // recrea la ventana
-        GestionDeAlumnos gestionAlumno = new GestionDeAlumnos();
-       
+        GestionDeAlumnos gestionAlumno = new GestionDeAlumnos(conexion);
+        
         gestionAlumno.setVisible(true); // coloca visible la ventana nueva
         jDesktopPane1.add(gestionAlumno);
     }//GEN-LAST:event_jMenuItem1ActionPerformed

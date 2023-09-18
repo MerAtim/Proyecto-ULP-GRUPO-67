@@ -16,7 +16,7 @@ public class UniversidadEjemplo {
         
         //guardarAlumno();
         //Alumno mario = new Alumno(7, 65325120, "Flores","Luis Mario", LocalDate.of(1991, 10, 25), true);
-        AlumnoData alu= new AlumnoData();
+        //AlumnoData alu= new AlumnoData();
         /*alu.guardarAlumno(mario);*/
         
         //buscarAlumno();
