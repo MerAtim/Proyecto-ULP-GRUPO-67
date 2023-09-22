@@ -1,13 +1,14 @@
-
 package universidadejemplo.Vistas;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 
     public MenuPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
+
     }
 
-      @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -30,16 +31,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 645, Short.MAX_VALUE)
+            .addGap(0, 805, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 803, Short.MAX_VALUE)
         );
 
         jMenuBar1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
         JmAlumno.setText("Alumno");
+        JmAlumno.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
         JmiFormularioAlumno.setText("Formulario de Alumno");
         JmiFormularioAlumno.addActionListener(new java.awt.event.ActionListener() {
@@ -52,6 +54,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(JmAlumno);
 
         JmMateria.setText("Materia");
+        JmMateria.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
         JmiFormularioMateria.setText("Formulario de Materia");
         JmiFormularioMateria.addActionListener(new java.awt.event.ActionListener() {
@@ -64,8 +67,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(JmMateria);
 
         JmAdministracion.setText("Administracion");
+        JmAdministracion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
         JmiManejoInscripciones.setText("Manejo de Inscripciones");
+        JmiManejoInscripciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmiManejoInscripcionesActionPerformed(evt);
+            }
+        });
         JmAdministracion.add(JmiManejoInscripciones);
 
         JmiManipulacionNotas.setText("Manipulación de Notas");
@@ -79,6 +88,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(JmAdministracion);
 
         JmConsultas.setText("Consultas");
+        JmConsultas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
         JmiAlumnosPorMateria.setText("Alumnos por Materia");
         JmConsultas.add(JmiAlumnosPorMateria);
@@ -86,6 +96,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(JmConsultas);
 
         JmSalir.setText("Salir");
+        JmSalir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         JmSalir.setMinimumSize(new java.awt.Dimension(600, 600));
         JmSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,19 +135,58 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.add(gdm);
         escritorio.moveToFront(gdm);
         escritorio.setVisible(true);
-        this.setLocationRelativeTo(null);
         gdm.setVisible(true);
+        int x = (escritorio.getWidth() - gdm.getWidth()) / 2;
+        int y = (escritorio.getHeight() - gdm.getHeight()) / 2;
+        gdm.setLocation(x, y);
         escritorio.repaint();
-        
-                      
     }//GEN-LAST:event_JmiFormularioMateriaActionPerformed
 
     private void JmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmSalirActionPerformed
-       dispose();
+    dispose();
     }//GEN-LAST:event_JmSalirActionPerformed
-   
+
+    private void JmiManejoInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmiManejoInscripcionesActionPerformed
+      
+        escritorio.removeAll();
+        ManejoDeInscripciones mdi = new ManejoDeInscripciones();
+        escritorio.add(mdi);
+        escritorio.moveToFront(mdi);
+        escritorio.setVisible(true);
+        mdi.setVisible(true);
+        int x = (escritorio.getWidth() - mdi.getWidth()) / 2;
+        int y = (escritorio.getHeight() - mdi.getHeight()) / 2;
+        mdi.setLocation(x, y);
+        escritorio.repaint();
+        
+    }//GEN-LAST:event_JmiManejoInscripcionesActionPerformed
+
     public static void main(String args[]) {
-         java.awt.EventQueue.invokeLater(new Runnable() {
+
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuPrincipal().setVisible(true);
             }

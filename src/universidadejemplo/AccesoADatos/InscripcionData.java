@@ -71,8 +71,7 @@ public class InscripcionData {
     }
 
     public List<Materia> obtenerMateriasCursadas(int id) {
-        String sql = "SELECT inscripcion.idMateria, nombre, año FROM inscripcion, materia WHERE inscripcion.idMateria=materia.idMateria AND inscripcion.idAlumno=?;";
-        List<Materia> materias = new ArrayList<Materia>();
+        String sql = "SELECT DISTINCT inscripcion.idMateria, nombre, año FROM inscripcion, materia WHERE inscripcion.idMateria=materia.idMateria AND inscripcion.idAlumno=? and inscripcion.estado = 1";        List<Materia> materias = new ArrayList<Materia>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -94,7 +93,8 @@ public class InscripcionData {
 
     public List<Materia> obtenerMateriasNoCursadas(int id) {
         List<Materia> materias = new ArrayList<>();
-        String sql = "SELECT inscripcion.idMateria, nombre, año FROM inscripcion, materia WHERE materia.estado=0";
+        String sql = "SELECT m.idMateria, m.nombre, m.año FROM materia m WHERE idMateria "
+                + "NOT IN(SELECT idMateria FROM inscripcion i WHERE idAlumno = ? and i.estado = 1)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -115,7 +115,7 @@ public class InscripcionData {
     }
 
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria) {
-        String sql = "UPDATE inscripcion SET estado=false WHERE idAlumno=? AND idMateria=?;";
+        String sql = "UPDATE inscripcion SET estado=0 WHERE idAlumno=? AND idMateria=?;";
         try {
             PreparedStatement preparedStatement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, idAlumno);

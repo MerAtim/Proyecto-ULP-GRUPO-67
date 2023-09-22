@@ -12,6 +12,9 @@
         <Menu class="javax.swing.JMenu" name="JmAlumno">
           <Properties>
             <Property name="text" type="java.lang.String" value="Alumno"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="JmiFormularioAlumno">
@@ -27,6 +30,9 @@
         <Menu class="javax.swing.JMenu" name="JmMateria">
           <Properties>
             <Property name="text" type="java.lang.String" value="Materia"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="JmiFormularioMateria">
@@ -42,12 +48,18 @@
         <Menu class="javax.swing.JMenu" name="JmAdministracion">
           <Properties>
             <Property name="text" type="java.lang.String" value="Administracion"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="JmiManejoInscripciones">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manejo de Inscripciones"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JmiManejoInscripcionesActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JmiManipulacionNotas">
               <Properties>
@@ -62,6 +74,9 @@
         <Menu class="javax.swing.JMenu" name="JmConsultas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultas"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="JmiAlumnosPorMateria">
@@ -74,6 +89,9 @@
         <Menu class="javax.swing.JMenu" name="JmSalir">
           <Properties>
             <Property name="text" type="java.lang.String" value="Salir"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[600, 600]"/>
             </Property>
@@ -123,12 +141,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="645" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="805" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="600" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="803" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

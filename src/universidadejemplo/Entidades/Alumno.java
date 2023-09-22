@@ -84,5 +84,9 @@ public class Alumno {
     public String toString() {
         return "IdAlumno: " + idAlumno + "\nApellido: " + apellido + "\nNombre: " + nombre + "\nFecha de Nacimiento: " + fechaNacimiento + "\nActivo: " + activo ;
     }
+    
+     public String obtenerAlumnoCombo(){
+        return dni +", "+ apellido + ", " + nombre;
+    }
    
 }
