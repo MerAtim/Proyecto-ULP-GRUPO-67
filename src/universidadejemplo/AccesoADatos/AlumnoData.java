@@ -11,12 +11,11 @@ public class AlumnoData {
     private Connection con = null;
     
     
-    public AlumnoData(Conexion conexion) {
+    public AlumnoData() {
         this.con = Conexion.getConexion();
     }
 
     public void guardarAlumno(Alumno alumno) {
-
         String sql = "INSERT INTO alumno (dni, apellido, nombre, fechaNacimiento, estado) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -29,11 +28,11 @@ public class AlumnoData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 alumno.setIdAlumno(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Alumno añadido con exito.");
+                JOptionPane.showMessageDialog(null, "Alumno Guardado");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno");
         }
     }
 
@@ -65,11 +64,10 @@ public class AlumnoData {
     }
 
     public Alumno buscarAlumnoPorDni(int dni) {
-        Alumno alumno = null;
-        String sql = "SELECT idAlumno, dni, apellido, nombre, fechaNacimiento FROM alumno WHERE dni=? AND estado=1";
-        PreparedStatement ps = null;
+        String sql = "SELECT idAlumno, dni, apellido, nombre, fechaNacimiento, estado FROM alumno WHERE dni=?";
+        Alumno alumno = null;        
         try {
-            ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, dni);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -79,10 +77,8 @@ public class AlumnoData {
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setActivo(true);
-            } else {
-                JOptionPane.showMessageDialog(null, "No existe el alumno");
-            }
+                alumno.setActivo(rs.getBoolean("estado"));
+            } //Si no lo encuentra devuelve el alumno vacio
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno" + ex.getMessage());
@@ -114,8 +110,8 @@ public class AlumnoData {
     }
 
     public void modificarAlumno(Alumno alumno) {
-
-        String sql = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?, fechaNacimiento = ? WHERE idAlumno = ?";
+        
+        String sql = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?, fechaNacimiento = ?, estado = ? WHERE dni = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps = con.prepareStatement(sql);
@@ -123,12 +119,10 @@ public class AlumnoData {
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
-            ps.setInt(5, alumno.getIdAlumno());
+            ps.setBoolean(5, alumno.isActivo());
+            ps.setInt(6, alumno.getDni());
             int exito = ps.executeUpdate();
-
-            if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "ModificadoExitosamente.");
-            } else {
+            if (exito != 1) {
                 JOptionPane.showMessageDialog(null, "El alumno no existe.");
             }
         } catch (SQLException ex) {
@@ -137,17 +131,15 @@ public class AlumnoData {
     }
 
     public void eliminarAlumno(int id) {
+        String sql = "UPDATE alumno SET estado = 0 WHERE idAlumno = ?";
         try {
-            String sql = "UPDATE alumno SET estado = 0 WHERE idAlumno = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
-            int seModifico = ps.executeUpdate();
-            if (seModifico > 1) {
-                JOptionPane.showMessageDialog(null, "Se eliminó el alumno.");
-            }else{
-                JOptionPane.showMessageDialog(null, "El alumno no existe");
+            int seBorro = ps.executeUpdate();
+            if (seBorro == 0) {
+                JOptionPane.showMessageDialog(null, "Alumno eliminado");
             }
-            ps.close();
+            //ps.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno.");
         }
