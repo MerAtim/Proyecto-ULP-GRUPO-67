@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import universidadejemplo.Entidades.Materia;
 
-/**
- *
- * @authors Grupo_67
- */
 public class MateriaData {
 
     private Connection connection = null;
@@ -19,7 +15,7 @@ public class MateriaData {
 
     public void guardarMateria(Materia materia) {
 
-        String sqlInsert = "INSERT INTO materia(nombre, año, estado VALUES(?,?,?)";
+        String sqlInsert = "INSERT INTO materia(nombre, año, estado) VALUES(?,?,?)";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS);
@@ -41,7 +37,7 @@ public class MateriaData {
     public Materia buscarMateria(int idMateria) {
         Materia materia = null;
         try {
-            String buscarMateria = "SELECT nombre, año FROM materia WHERE idMateria = ? AND estado = 1";
+            String buscarMateria = "SELECT nombre, año, estado FROM materia WHERE idMateria = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(buscarMateria);
             preparedStatement.setInt(1, idMateria);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -50,6 +46,7 @@ public class MateriaData {
                 materia.setIdMateria(idMateria);
                 materia.setNombre(resultSet.getString("nombre"));
                 materia.setAnioMateria(resultSet.getInt("año"));
+                materia.setActivo(resultSet.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe la materia.");
             }
@@ -72,9 +69,9 @@ public class MateriaData {
 
             int seModifico = preparedStatement.executeUpdate();
             if (seModifico == 1) {
-                JOptionPane.showMessageDialog(null, "Materia modificada!");
+                JOptionPane.showMessageDialog(null, "Materia modificada.");
             } else {
-                JOptionPane.showMessageDialog(null, "La materia no existe");
+                JOptionPane.showMessageDialog(null, "La materia no existe.");
             }
             preparedStatement.close();
         } catch (SQLException ex) {
@@ -84,12 +81,10 @@ public class MateriaData {
 
     public void eliminarMateria(int idMateria) {
         try {
-            String deliteLogic = " UPDATE materia SET estado = 0 WHERE idMateria = ?";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(deliteLogic);
+            String deleteLogic = " UPDATE materia SET estado = 0 WHERE idMateria = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(deleteLogic);
             preparedStatement.setInt(1, idMateria);
             int esModificado = preparedStatement.executeUpdate();
-
             if (esModificado > 0) {
                 JOptionPane.showMessageDialog(null, "Materia eliminada");
             } else {
