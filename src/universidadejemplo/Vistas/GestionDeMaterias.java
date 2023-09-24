@@ -71,6 +71,7 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
 
         JbEliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         JbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Eliminar.png"))); // NOI18N
+        JbEliminar.setText("Borrar");
         JbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JbEliminarActionPerformed(evt);
@@ -79,6 +80,7 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
 
         JbGuardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         JbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar.png"))); // NOI18N
+        JbGuardar.setText("Guardar");
         JbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JbGuardarActionPerformed(evt);
@@ -87,6 +89,7 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
 
         JbSalir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         JbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/chau.png"))); // NOI18N
+        JbSalir.setText("Salir");
         JbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JbSalirActionPerformed(evt);
@@ -131,25 +134,10 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(escritorioLayout.createSequentialGroup()
-                            .addGap(53, 53, 53)
-                            .addComponent(JbNuevo)
-                            .addContainerGap(386, Short.MAX_VALUE))
-                        .addGroup(escritorioLayout.createSequentialGroup()
-                            .addGap(196, 196, 196)
-                            .addComponent(JbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(69, 69, 69)
-                            .addComponent(JbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(68, 68, 68)
-                            .addComponent(JbSalir)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(escritorioLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel1)
-                        .addGap(78, 197, Short.MAX_VALUE))))
+                .addComponent(jLabel3)
+                .addGap(56, 56, 56)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,8 +166,19 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(escritorioLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addComponent(JbNuevo)
+                        .addGap(18, 18, 18)
+                        .addComponent(JbEliminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(JbGuardar)
+                        .addGap(18, 18, 18)
+                        .addComponent(JbSalir)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 18, Short.MAX_VALUE))))
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,10 +213,12 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
                     .addComponent(JrbEstado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JbNuevo)
-                    .addComponent(JbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JbSalir))
+                    .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(JbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JbNuevo))
+                    .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(JbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JbSalir)))
                 .addGap(25, 25, 25))
         );
 

@@ -295,6 +295,7 @@ public class ManejoDeInscripciones extends javax.swing.JInternalFrame {
 
     private void cargarCombo() {
         JcbAlumnos.removeAllItems();
+        JcbAlumnos.addItem(null);
         for (Alumno alumno : ad.listarAlumnos()) {
             JcbAlumnos.addItem(alumno);
         }

@@ -97,7 +97,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         JmSalir.setText("Salir");
         JmSalir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        JmSalir.setMinimumSize(new java.awt.Dimension(600, 600));
         JmSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JmSalirActionPerformed(evt);
@@ -142,12 +141,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.repaint();
     }//GEN-LAST:event_JmiFormularioMateriaActionPerformed
 
-    private void JmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmSalirActionPerformed
-    dispose();
-    }//GEN-LAST:event_JmSalirActionPerformed
-
     private void JmiManejoInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmiManejoInscripcionesActionPerformed
-      
         escritorio.removeAll();
         ManejoDeInscripciones mdi = new ManejoDeInscripciones();
         escritorio.add(mdi);
@@ -158,8 +152,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         int y = (escritorio.getHeight() - mdi.getHeight()) / 2;
         mdi.setLocation(x, y);
         escritorio.repaint();
-        
     }//GEN-LAST:event_JmiManejoInscripcionesActionPerformed
+
+    private void JmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_JmSalirActionPerformed
 
     public static void main(String args[]) {
 
